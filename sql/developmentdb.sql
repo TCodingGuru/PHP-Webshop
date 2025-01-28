@@ -64,7 +64,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `address`, `role`, `password`) VALUES
-(3, 'Bram Terlouw', 'test@email.com', 'Slotenmakerstraat 73', 'user', 'wachtwoord'),
+(3, 'gilberto seedorf', 'test@email.com', 'Slotenmakerstraat 73', 'user', 'wachtwoord'),
 (4, 'Mark de Haan', 'mark@mail.com', 'bakkerstraat 72', 'admin', 'wachtwoord');
 
 --
