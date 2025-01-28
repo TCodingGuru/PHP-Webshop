@@ -1,0 +1,4 @@
+public/.htaccess
+public top 3 lines
+procfile
+composer.json
