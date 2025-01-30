@@ -9,7 +9,6 @@ require __DIR__ . '/../nav.php';
         <div id="detail-body container" class="detail-body container">
             <!-- use js to fetch and display product data -->
         </div>
-
         <div class="detail-form container">
             <!-- form used for adding to cart -->
             <form id="form" method="post">

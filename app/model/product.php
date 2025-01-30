@@ -5,7 +5,6 @@ class Product {
     public string $name;
     public string $description;
     public int $price;
-    public $type;
+    public string $type;
 }
-
 ?>
