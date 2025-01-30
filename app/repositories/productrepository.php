@@ -14,7 +14,7 @@ class ProductRepository extends Repository {
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Product');
             $products = $stmt->fetchAll();
-
+            
             return $products;
             
         } catch (PDOException $e) {

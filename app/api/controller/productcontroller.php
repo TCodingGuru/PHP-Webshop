@@ -14,6 +14,7 @@ class ProductController {
     {
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $products = $this->productService->getAll(); // <-- get products
+            var_dump($products);
             echo json_encode($products); // <-- echo to browser
         }
     }
