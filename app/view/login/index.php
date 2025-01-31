@@ -20,8 +20,8 @@ require __DIR__ . '/../nav.php';
       <!-- submit button -->
       <button name="submit" class="btn btn-lg btn-primary btn-block mt-5" type="submit">Sign in</button>
       <p class="mt-3">
-        Don't have an account?
-        <a href="register.php" class="text-primary">Create one</a>
+        No account?
+        <a href="/register" class="text-primary">Create one</a>
       </p>
     </form>
 

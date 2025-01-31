@@ -302,9 +302,7 @@ button {
 }
 
 button:hover {
-    /* background-color: #333; */
     color: #FAFAFA;
-    /* border: 2px solid #FAFAFA; */
 }
 
 button:focus {
@@ -312,33 +310,253 @@ button:focus {
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Button style for 'Add to Basket' */
 .btn-add-to-basket {
-    background-color: #FAFAFA; /* Light background */
-    color: #333; /* Dark text */
-    border: 2px solid #333; /* Dark border */
-    border-radius: 5px; /* Slightly rounded corners */
-    padding: 10px 20px; /* Ample padding */
-    text-align: center; /* Center the text */
-    text-decoration: none; /* Remove underline */
-    font-size: 1rem; /* Set font size */
-    transition: all 0.3s ease; /* Smooth transition for hover/focus */
-    display: inline-block; /* Make the button inline-block */
-    width: auto; /* Auto width based on content */
-    margin-top: auto; /* Align to the bottom of the card */
+    background-color: #FAFAFA; 
+    color: #333; 
+    border: 2px solid #333; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    font-size: 1rem; 
+    transition: all 0.3s ease; 
+    display: inline-block; 
+    width: auto;
+    margin-top: auto; 
 }
 
-/* Hover effect: Change background and text color */
 .btn-add-to-basket:hover {
-    background-color: #333; /* Dark background */
-    color: #FAFAFA; /* Light text color */
-    border: 2px solid #FAFAFA; /* Light border */
+    background-color: #333;
+    color: #FAFAFA; 
+    border: 2px solid #FAFAFA; 
 }
 
-/* Focus effect: Outline and box-shadow for accessibility */
 .btn-add-to-basket:focus {
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2); /* Add subtle glow */
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2); 
 }
 
+/* shopping cart */
 
+/* General container style */
+.container.cart-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container.cart-body {
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FAFAFA;
+    border: 1px solid #ddd;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center; /* Center-align both header and body cells */
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    text-align: center; /* Ensure header text is centered */
+    vertical-align: middle;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table td a {
+    display: inline-block;
+    margin: 0 auto; 
+    text-align: center;
+    width: auto;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #e74c3c; 
+    color: white;
+    border: 2px solid black; 
+}
+
+.btn-danger:hover {
+    background-color: #c0392b; 
+    border: 2px solid #c0392b; 
+}
+
+.btn-danger:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.5);
+}
+
+.btn-primary {
+    background-color: green; 
+    color: white;
+    border: 2px solid black; 
+}
+
+.btn-primary:hover {
+    background-color: greenyellow; 
+    border: 2px solid green; 
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+.table td a {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.table tr:last-child {
+    font-weight: bold;
+}
+
+.table td:last-child {
+    text-align: middle;
+}
+
+/* payment */
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 600px; 
+    margin: 50px auto; 
+    padding: 30px;
+    border-radius: 8px;
+}
+
+h1.mt-5 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.form-group {
+    width: 100%; 
+    max-width: 500px; 
+    margin-bottom: 1.5rem;
+    text-align: left; 
+}
+
+.form-control {
+    width: 100%; 
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: 2px solid #3498db;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+/* Optional: Style for the subtotal */
+.mt-5 b {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+    }
+}
+
+.btn-primary {
+    background-color: #3498db;  
+    color: white;  
+    border: 2px solid #3498db; 
+    padding: 12px 20px; 
+    font-size: 1.1rem; 
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: all 0.3s ease;  
+    margin-top: 20px;  
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;  
+    border-color: #2980b9;  
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); 
+}

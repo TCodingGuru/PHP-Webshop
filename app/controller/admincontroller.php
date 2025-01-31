@@ -20,7 +20,7 @@ class AdminController
     public function insert()
     {
         if (isset($_POST['inputName'])) {
-            //$_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // <-- filter POST
 
             // check all individual post fields
             if (isset($_POST['inputName'])) {
@@ -52,7 +52,7 @@ class AdminController
     public function update()
     {
         if (isset($_POST['inputName'])) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // <-- filter POST
 
             // check all individual post fields
             if (isset($_POST['id'])) {

@@ -4,7 +4,7 @@ require __DIR__ . '/../nav.php';
 ?>
 
 <body>
-    <div class="container">
+    <div class="container payment-container">
         <h1 class="mt-5">Payment</h1>
         <p>Enter your personal information and click on confirm.</p>
         
