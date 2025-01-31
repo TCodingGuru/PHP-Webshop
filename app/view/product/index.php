@@ -3,7 +3,11 @@ require __DIR__ . '/../head.php';
 require __DIR__ . '/../nav.php';
 ?>
 
-<body style = "background-color:  #FAFAFA">
+<body>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
+
     <div class="container mt-5">
         <h1 class="mb-3">Our products:</h1>
         <div class="container-fluid content-row">
