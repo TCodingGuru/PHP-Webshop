@@ -8,6 +8,4 @@ class User {
     public string $role;
     public string $password;
 }
-
-
 ?>

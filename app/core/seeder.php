@@ -18,7 +18,7 @@ class Seeder
                 description VARCHAR(1000) NOT NULL,
                 price INT NOT NULL,
                 type VARCHAR(30) NOT NULL
-            )");
+            )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
         } catch (PDOException $e) {
             echo "Query failed (products table creation): " . $e->getMessage();
         }
@@ -31,7 +31,7 @@ class Seeder
                 address VARCHAR(30) NOT NULL,
                 role VARCHAR(20) NOT NULL,
                 password VARCHAR(30) NOT NULL
-            )");
+            )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
         } catch (PDOException $e) {
             echo "Query failed (users table creation): " . $e->getMessage();
         }
@@ -61,11 +61,32 @@ class Seeder
             echo "Query failed (users seeding): " . $e->getMessage();
         }
     }
+    public function alterTables()
+    {
+        // Alter the products table to add the primary key and set the auto_increment
+        try {
+            $this->connection->query("ALTER TABLE products
+                ADD PRIMARY KEY (id),
+                MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12");
+        } catch (PDOException $e) {
+            echo "Query failed (altering products table): " . $e->getMessage();
+        }
+
+        // Alter the users table to add the primary key and set the auto_increment
+        try {
+            $this->connection->query("ALTER TABLE users
+                ADD PRIMARY KEY (id),
+                MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6");
+        } catch (PDOException $e) {
+            echo "Query failed (altering users table): " . $e->getMessage();
+        }
+    }
 
     public function run()
     {
         $this->createTables();
         $this->seedProducts();
         $this->seedUsers();
+        $this->alterTables();
     }
 }

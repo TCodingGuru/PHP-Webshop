@@ -3,7 +3,7 @@ require __DIR__ . '/../head.php';
 require __DIR__ . '/../nav.php';
 ?>
 
-<body>
+<body style = "background-color:  #FAFAFA">
     <div class="container mt-5">
         <h1 class="mb-3">Our products:</h1>
         <div class="container-fluid content-row">
@@ -14,7 +14,6 @@ require __DIR__ . '/../nav.php';
                 <option value="CPU">CPU</option>
                 <option value="SSD">SSD</option>
             </select>
-
             <!-- Cards for displaying products will go here -->
             <div id="row" class="row"></div>
         </div>
