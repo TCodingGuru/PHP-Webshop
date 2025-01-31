@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Perform the POST request to add the product to the cart
-        fetch("/api/cart/index", {
+        fetch("/api/cart", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

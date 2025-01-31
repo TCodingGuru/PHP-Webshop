@@ -4,10 +4,9 @@ require __DIR__ . '/../nav.php';
 ?>
 
 <body>
-
+<link href="/css/styles.css" rel="stylesheet">
     <div class="container mt-5">
         <div id="detail-body container" class="detail-body container">
-            <!-- use js to fetch and display product data -->
         </div>
         <div class="detail-form container">
             <!-- form used for adding to cart -->
@@ -23,7 +22,7 @@ require __DIR__ . '/../nav.php';
                 quantity: document.getElementById("quantity").value,
                 id: product_id
             };
-            fetch("/api/cart/index", { // <-- post through api
+            fetch("/api/cart", { // <-- post through api
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -43,11 +42,11 @@ require __DIR__ . '/../nav.php';
 
                 // create elements
                 const product_Header = document.createElement("h1");
-                product_Header.innerHTML = "Product: " + data.name;
+                product_Header.innerHTML = data.name;
 
                 const description_Header = document.createElement("h2");
                 description_Header.className = "mt-5"
-                description_Header.innerHTML = "Description: ";
+                description_Header.innerHTML = "Description ";
 
                 const description = document.createElement("p");
                 description.innerHTML = data.description;
@@ -56,7 +55,8 @@ require __DIR__ . '/../nav.php';
                 price.innerHTML = "<b>Price: </b> " + data.price
 
                 const addButton = document.createElement("button");
-                addButton.innerHTML = "add to cart";
+                addButton.innerHTML = "Add to Cart";
+                addButton.className = "btn-add-to-basket";
                 addButton.onclick = function () {sendForm(data.id);}
 
                 document.getElementById("detail-body container").appendChild(product_Header);
