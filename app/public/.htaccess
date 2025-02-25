@@ -1,4 +1,10 @@
+Options -Indexes
 RewriteEngine on
+
+# Ensure index.php is the default
+DirectoryIndex index.php index.html
+
+# Redirect all non-existing files/folders to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
