@@ -1,4 +1,4 @@
-# Disable directory listing
+# Disable directory listing for security
 Options -Indexes
 
 # Enable Rewrite Engine
@@ -7,11 +7,11 @@ RewriteEngine On
 # Ensure index.php is the default entry point
 DirectoryIndex index.php index.html index.htm
 
-# Redirect all non-existing files/folders to index.php (for routing)
+# Redirect all non-existing files/folders to index.php for routing
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
 
-# Force requests to go through the public directory if it's not included
-RewriteCond %{REQUEST_URI} !^/public/
-RewriteRule ^(.*)$ /public/$1 [L]
+# Force requests to go through the correct public directory inside /app
+RewriteCond %{REQUEST_URI} !^/app/public/
+RewriteRule ^(.*)$ /app/public/$1 [L]
