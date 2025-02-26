@@ -1,10 +1,17 @@
+# Disable directory listing
 Options -Indexes
-RewriteEngine on
 
-# Ensure index.php is the default
-DirectoryIndex index.php index.html
+# Enable Rewrite Engine
+RewriteEngine On
 
-# Redirect all non-existing files/folders to index.php
+# Ensure index.php is the default entry point
+DirectoryIndex index.php index.html index.htm
+
+# Redirect all non-existing files/folders to index.php (for routing)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+
+# Force requests to go through the public directory if it's not included
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
