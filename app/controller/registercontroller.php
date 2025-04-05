@@ -18,15 +18,13 @@ class RegisterController
     public function validate()
     {
         
-        // check for POST var
         if (isset($_POST['submit'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // <-- filter POST
             
             
-            // get vars
             $email = $_POST['inputEmail'];
-            $password = $_POST['inputPassword'];
-
+            $password =  password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
+           
             // check user existence with email and password
             $count = $this->loginService->validateCredentials($email, $password);
 
@@ -47,7 +45,6 @@ class RegisterController
 
     public function logout()
     {
-        // unset session var
         unset($_SESSION['logged_User']);
         header('Location: /');
     }

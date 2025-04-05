@@ -5,31 +5,32 @@ require __DIR__ . '/repository.php';
 
 class CartRepository extends Repository
 {
+
     public function getAll($cart_products)
     {
-
-        // get all products that are in cart
         try {
-            
-            $array_Question_marks = implode(',', array_fill(0, count($cart_products), '?')); // <-- get the amount of products and turn into ?
-            $sqlquery = "SELECT id, name, description, price, type FROM products WHERE id IN ($array_Question_marks)";
+            if (empty($cart_products)) {
+                return []; // No products to fetch
+            }
+
+            $product_ids = array_keys($cart_products); // Explicitly get product IDs
+            $placeholders = implode(',', array_fill(0, count($product_ids), '?'));
+
+            $sqlquery = "SELECT id, name, description, price, type FROM products WHERE id IN ($placeholders)";
             $stmt = $this->connection->prepare($sqlquery);
 
-            $index = 1;
-            foreach($cart_products as $key => $value) {
-                $stmt->bindValue($index, $key, PDO::PARAM_INT);
-                $index++;
+            foreach ($product_ids as $index => $id) {
+                $stmt->bindValue($index + 1, $id, PDO::PARAM_INT);
             }
 
             $stmt->execute();
-            
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $products;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo $e;
+            // Log the error instead of showing it to the user
+            error_log("Database error in getAll(): " . $e->getMessage());
+            return []; // Return empty array on error
         }
     }
-
     function addToCart($product_id, $quantity)
     {
         $sqlQuery = "SELECT id, name, description, price, type FROM products WHERE id=:id";
@@ -42,18 +43,14 @@ class CartRepository extends Repository
 
         if ($product && $quantity > 0) {
 
-            // check existence session variable
             if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 
-                // if already in array, update quantity, else add
                 if (array_key_exists($product_id, $_SESSION['cart'])) {
                     $_SESSION['cart'][$product_id] += $quantity;
-                } 
-                else {
+                } else {
                     $_SESSION['cart'][$product_id] = $quantity;
                 }
-            } 
-            else { // or make array var in session
+            } else {
                 $_SESSION['cart'] = array($product_id => $quantity);
             }
         }

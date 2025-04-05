@@ -8,12 +8,10 @@ require __DIR__ . '/../nav.php';
         <h1 class="mt-5">Payment</h1>
         <p>Enter your personal information and click on confirm.</p>
         
-        <!-- form for payment -->
-        <form class="" action="/payment/confirm" method="POST">
+        <form action="/payment/confirm" method="POST">
             <div class="form-group mb-2 col-12 col-md-6">
                 <label for="emailInput">Enter email:</label>
 
-                <!-- not logged in is empty form, logged in is filled form -->
                 <?php if (!isset($_SESSION['logged_User'])) { ?>
                     <input type="email" class="form-control" name="emailInput" placeholder="name@example.com" required>
                 <?php } else { ?>

@@ -19,76 +19,61 @@ class AdminController
 
     public function insert()
     {
-        if (isset($_POST['inputName'])) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // <-- filter POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postData = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            // check all individual post fields
-            if (isset($_POST['inputName'])) {
-                $productName = $_POST['inputName'];
-            }
+            $productName = $postData['inputName'] ?? null;
+            $productDescription = $postData['inputDescription'] ?? null;
+            $productPrice = isset($postData['inputPrice']) && is_numeric($postData['inputPrice']) ? $postData['inputPrice'] : null;
+            $productType = $postData['inputType-Add'] ?? null;
 
-            if (isset($_POST['inputDescription'])) {
-                $productDescription = $_POST['inputDescription'];
-            }
-
-            if (isset($_POST['inputPrice']) && is_numeric($_POST['inputPrice'])) {
-                $productPrice = $_POST['inputPrice'];
-            }
-
-            if (isset($_POST['inputType-Add'])) {
-                $productType = $_POST['inputType-Add'];
-            }
-
-            // if all fields are not empty then insert new product
-            if (!empty($productName) && !empty($productDescription) && !empty($productPrice) && !empty($productType)) {
+            if ($productName && $productDescription && $productPrice && $productType) {
                 $this->adminService->insert($productName, $productDescription, $productPrice, $productType);
                 header('Location: /product');
             } else {
-                header('Location: /admin?error=insertfailed'); // else show error message
+                header('Location: /admin?error=insertfailed');
             }
         }
     }
-
     public function update()
     {
-        if (isset($_POST['inputName'])) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // <-- filter POST
+        // Check if form submission contains a product name
+        if (!empty($_POST['inputName'])) {
+            // Sanitize all POST input data
+            $cleanInput = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            // check all individual post fields
-            if (isset($_POST['id'])) {
-                $product_id = $_POST['id'];
-            }
+            // Extract and validate required fields
+            $productId = $cleanInput['id'] ?? null;
+            $productName = $cleanInput['inputName'] ?? null;
+            $productDescription = $cleanInput['inputDescription'] ?? null;
+            $productPrice = isset($cleanInput['inputPrice']) && is_numeric($cleanInput['inputPrice'])
+                ? $cleanInput['inputPrice']
+                : null;
+            $productType = $cleanInput['inputType-edit'] ?? null;
 
-            if (isset($_POST['inputName'])) {
-                $productName = $_POST['inputName'];
-            }
-
-            if (isset($_POST['inputDescription'])) {
-                $productDescription = $_POST['inputDescription'];
-            }
-
-            if (isset($_POST['inputPrice']) && is_numeric($_POST['inputPrice'])) {
-                $productPrice = $_POST['inputPrice'];
-            }
-
-            if (isset($_POST['inputType-edit'])) {
-                $productType = $_POST['inputType-edit'];
-            }
-
-             // if all fields are not empty then update new product
-            if (!empty($productName) && !empty($productDescription) && !empty($productPrice) && !empty($product_id) && !empty($productType)) {
-                $this->adminService->update($product_id, $productName, $productDescription, $productPrice, $productType);
-                header('Location: /product');
+            // Proceed only if all necessary fields are present and valid
+            if ($productId && $productName && $productDescription && $productPrice && $productType) {
+                $this->adminService->update($productId, $productName, $productDescription, $productPrice, $productType);
+                header('Location: /product'); // Redirect after successful update
             } else {
-                header('Location: /admin?error=updatefailed'); // else show error message
+                // Redirect with error if any required input is missing or invalid
+                header('Location: /admin?error=updatefailed');
             }
         }
     }
 
-    public function delete() {
-        $product_id = $_GET['id'];
 
-        $this->adminService->delete($product_id);
-        header('Location: /admin');
+    public function delete()
+    {
+        $productId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+    
+        if ($productId && is_numeric($productId)) {
+            $this->adminService->delete($productId);
+            header('Location: /admin');
+            exit;
+        } else {
+            header('Location: /admin?error=invalid_id');
+            exit;
+        }
     }
 }

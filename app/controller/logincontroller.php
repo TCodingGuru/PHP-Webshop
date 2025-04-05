@@ -20,10 +20,8 @@ class LoginController
         
         // check for POST var
         if (isset($_POST['submit'])) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // <-- filter POST
             
-            
-            // get vars
             $email = $_POST['inputEmail'];
             $password = $_POST['inputPassword'];
 
