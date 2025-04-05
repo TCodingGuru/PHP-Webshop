@@ -1,6 +1,8 @@
 🖥️ Simple Webshop – PC Parts
 This is a simple webshop built to showcase PC components. It includes user and admin login functionality, and runs using Docker for easy setup.
 
+If you would like to share this repository: https://github.com/TCodingGuru/PHP-Webshop
+
 Follow these steps to get the project up and running:
 
 1. ✅ Prerequisites
@@ -42,7 +44,9 @@ Alternative way
 6. in the terminal put docker-compose up
 
 7. if everthing went OK the container started and you can use the project at localhost
+
 🔐 Login Credentials
+
 👤 Normal User (Visitor)
 
 Email: test@email.com
