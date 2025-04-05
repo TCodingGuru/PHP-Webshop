@@ -13,6 +13,7 @@ Make sure you have the following installed:
 - An IDE or code editor like Visual Studio Code(https://code.visualstudio.com/download)
 
 2. 📥 Clone the Repository
+   
 For cloning the repository you could use the terminal or tools like Github desktop.
 
 Open your terminal and run:
