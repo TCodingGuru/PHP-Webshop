@@ -7,7 +7,9 @@ Follow these steps to get the project up and running:
 Make sure you have the following installed:
 
 Docker
+
 Git
+
 An IDE or code editor like Visual Studio Code
 
 2. 📥 Clone the Repository
@@ -24,14 +26,17 @@ docker-compose up
 🔐 Login Credentials
 👤 Normal User (Visitor)
 Email: test@email.com
+
 Password: wachtwoord
 
 🛠️ Admin User
 Email: mark@mail.com
+
 Password: wachtwoord
 
 📝 Notes
 The project is intended for learning/demo purposes.
+
 You can expand the product catalog or modify the admin panel for more control.
 
 
