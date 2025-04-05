@@ -6,11 +6,11 @@ Follow these steps to get the project up and running:
 1. ✅ Prerequisites
 Make sure you have the following installed:
 
-Docker
+- Docker
 
-Git
+- Git
 
-An IDE or code editor like Visual Studio Code
+- An IDE or code editor like Visual Studio Code(https://code.visualstudio.com/download)
 
 2. 📥 Clone the Repository
 Open your terminal and run:
@@ -21,15 +21,18 @@ Open your terminal and run:
 
 3. ⚙️ Run the Application
 In the root of the project directory, start the Docker containers:
-docker-compose up
+
+``` docker-compose up ```
 
 🔐 Login Credentials
 👤 Normal User (Visitor)
+
 Email: test@email.com
 
 Password: wachtwoord
 
 🛠️ Admin User
+
 Email: mark@mail.com
 
 Password: wachtwoord
